@@ -10,5 +10,5 @@ def user_choice(choice):
 
 def cart_items(cart, quantity):
     for x, y in zip(cart, quantity):
-        print(f'you ordered {y} {x}(s)')
+        print(f'{y} {x}(s) in your cart')
         return ""

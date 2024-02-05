@@ -8,11 +8,7 @@ class menu_item:
     def __str__(self):
         return f'{self.name} - ${self.price}\t {self.description}'
 
-    def __iter__(self):
-        return self
 
-"""
-Lines 17 thru 59 is testing / validation. 
 
 h1 = menu_item("Little Hamburger", "Burgers", "Single patty hamburger with Lettuce, Tomatoes, and Ketchup.", 2.99)
 h2 = menu_item("Little Cheeseburger", "Burgers", "Single patty hamburger with Cheese, Lettuce, Tomatoes, and Ketchup.", 3.99)
@@ -44,18 +40,18 @@ menu = [h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14, h15, h16, h
 menu_by_category = {}
 
 # Populate the dictionary
-# for item_number, item in enumerate(menu, start=1):
-#     category = item.category
-#     if category not in menu_by_category:
-#         menu_by_category[category] = []
-#     menu_by_category[category].append((item_number, item))
-# 
-# 
-# # Print menu items per category with item number
-# for category, items in menu_by_category.items():
-#     print(f"{category}:")
-#     for item_number, item in items:
-#         print(f"  {item_number}: {item.name} - {item.description} - ${item.price}")
-#     print()
 
-"""
+for item_number, item in enumerate(menu, start=1):
+    category = item.category
+    if category not in menu_by_category:
+        menu_by_category[category] = []
+
+    menu_by_category[category].append((item_number, item))
+
+
+# Print menu items per category with item number
+for category, items in menu_by_category.items():
+    print(f"{category}:")
+    for item_number, item in items:
+        print(f"  {item_number}: {item.name} - {item.description} - ${item.price}")
+    print()
