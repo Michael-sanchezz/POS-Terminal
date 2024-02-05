@@ -14,7 +14,7 @@ val = False
 rec = receipts.calc
 while val == False:
 
-    selection = int(input("which item would you like to purchase? select number "))
+    selection = int(input("Which item would you like to purchase? select number "))
     for index, items in enumerate(menu.menu):
         if index + 1 == selection:
             cart.append(items.name) #adds name of item to the cart
@@ -25,16 +25,26 @@ while val == False:
             sub_total += quantity * items.price #calculates subtotal
             grand_total = (sub_total * tax) + sub_total #calculates grandtotal
             rec.print_sub_grand("", sub_total, grand_total)# prints the subtotal and grandtotal
-
-            choice = input("would you like to display the menu? Or would you like to complete your purchase? menu/finish ")
-            # if finish then break out of loop and go to payment/ if menu then stay in loop and select more items
-            if choice == "menu":
-                print()
-            elif choice == "finish":
-                val = True
-
-payment = input("how would you like to pay? cash credit or check\n")
-receipts.calc.process_payment("", grand_total, payment)# select payment based on your choice
+            val2 = True
+            while val2 == True:
+                choice = input("Would you like to display the menu? Or would you like to complete your purchase? menu/finish ").lower()
+                # if finish then break out of loop and go to payment/ if menu then stay in loop and select more items
+                if choice == "menu":
+                    print()
+                    break
+                elif choice == "finish":
+                    val2 = False
+                    val = True
+                else:
+                    print("Invalid choice, please select menu or finish.")
+payment_val= True
+while payment_val == True:
+    payment = input("How would you like to pay? cash credit or check\n").lower()
+    if payment == "cash" or payment == "credit" or payment == "check":
+        receipts.calc.process_payment("", grand_total, payment)# select payment based on your choice
+        payment_val = False
+    else:
+        print("Invalid payment option. Please enter cash, credit or check.")
 
 
 
