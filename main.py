@@ -37,45 +37,35 @@ while val == False:
 payment = input("how would you like to pay? cash credit or check\n")
 receipts.calc.process_payment("", payment)
 
-            # if payment == "cash":
-            #     cash = int(input("what cash amount will you give "))
-            #     change = cash - grand_total
-            #     print(f"your change is $%.2f" % sub_total)
-            # elif payment == "check":
-            #     check_num = int(input("enter check number "))
-            # elif payment == "credit":
-            #     cc_num = int(input("enter credit card number "))
-            #     cc_exp = int(input("enter expiration date in mmyy format"))
-            #     cc_cvv = int(input("enter cvv"))
-            # print(receipt(shopping_cart, shopping_cart_quantity))
+class calc: 
+    def __init__(self,cart):
+        self.cart=cart
+    def calculate_totals(self):
+        subtotal = sum(item['line_total'] for item in self.cart)
+        sales_tax = subtotal * 0.08
+        grand_total = subtotal + sales_tax
+        return subtotal, sales_tax, grand_total
 
-            # print(f'you selected {items.name}')
-            # user_input.user_choice(user_input.shopping_cart.append(items.name))
-#             shopping_cart.append(items.name)
-#             price = items.price
-#             quantity = int(input("how many would you like? "))
-#             sub_total += (quantity * price)
-#             user_input.user_choice(selection)
-#             # user_input.user_choice(user_input.shopping_cart_quantity.append(items.name))
-#             shopping_cart_quantity.append(quantity)
-#             user_input.cart_items(shopping_cart,shopping_cart_quantity)
-#             grand_total = (sub_total * tax) + sub_total
-#             print(f'\nsub total: ${sub_total}\ntax: {tax}\nGrand total: $%.2f' % grand_total)
-#     choice = input("would you like to display the menu? Or would you like to complete your purchase? menu/finish ")
-#     if choice == "menu":
-#         print()
-#     elif choice == "finish":
-#         val = True
-# #
-# payment = input("how would you like to pay? cash credit or check\n")
-# if payment == "cash":
-#     cash = int(input("what cash amount will you give "))
-#     change = cash - grand_total
-#     print(f"your change is $%.2f" % sub_total)
-# elif payment == "check":
-#     check_num = int(input("enter check number "))
-# elif payment == "credit":
-#     cc_num = int(input("enter credit card number "))
-#     cc_exp = int(input("enter expiration date in mmyy format"))
-#     cc_cvv = int(input("enter cvv"))
-# print(receipt(shopping_cart, shopping_cart_quantity))
+    def process_payment(self, payment_type):
+        if payment_type == "cash":
+            amount = float(input("Enter amount tendered: $"))
+            return amount - self.calculate_totals()
+        elif payment_type == "check":
+            check_number = input("Enter check number: ")
+            return f"Check Number: {check_number}"
+        elif payment_type == "credit":
+            ccnum = input("Enter credit card number: ")
+            expiration = input("Enter expiration date (MM/YY): ")
+            cvv = input("Enter CVV: ")
+            return f"Credit Card: {ccnum}, Expiration: {expiration}, CVV: {cvv}"
+
+    def receipt(self):
+        subtotal, sales_tax, grand_total = self.calculate_totals()
+        print("Receipt:")
+        self.display_cart()
+        print(f"Subtotal: ${subtotal}")
+        print(f"Sales Tax: ${sales_tax}")
+        print(f"Grand Total: ${grand_total}")
+
+
+
