@@ -14,7 +14,8 @@ class calc:
         if payment_type == "cash":
             amount = int(input("Enter amount tendered: $"))
             amount = amount - grand
-            return (calc.get_change("", amount))
+            print(calc.get_change("", amount))
+            return ""
         elif payment_type == "check":
             check_number = input("Enter check number: ")
             return f"Thanks for your payment! \nyour payment info{check_number}"

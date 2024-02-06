@@ -44,12 +44,10 @@ while val == False:
 payment_val= True
 while payment_val == True:
     payment = input("How would you like to pay? cash credit or check\n").lower()
+    rec.print_sub_grand("", sub_total, grand_total)
     if payment == "cash" or payment == "credit" or payment == "check":#check for 1 of 3 payment options
         receipts.calc.process_payment("", grand_total, payment)# select payment based on your choice
         payment_val = False
     else:#if incorrect option selected asks for input again
         print("Invalid payment option. Please enter cash, credit or check.")
-
-
-
 
