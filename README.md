@@ -8,3 +8,13 @@ Issues: While creating this program, we had to merge different codes from each g
 
 How to use the project: The project should prompt the user to choose an item from the menu, after displaying it. The user must then decide how many of that item they choose and if they would like to choose something else from the menu or finish their order. Once the order is complete, the user is then prompted to answer if they would like to pay with cash, credit or a check. Based on the choice, the items ordered, subtotal , grand total and apppropriate payment info is displayed. The program then finishes. 
 
+User selection and quantity:
+selection = int(input("Which item would you like to purchase? select number "))
+        if 1 <= selection <= len(menu.menu):
+            items = menu.menu[selection - 1]
+            cart.append(items.name) #adds name of item to the cart
+            print(f'you selected {items.name}!')
+            quantity = int(input("how many would you like? "))# how many of the item you selected
+
+  
+
