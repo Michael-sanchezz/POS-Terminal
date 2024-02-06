@@ -15,6 +15,13 @@ selection = int(input("Which item would you like to purchase? select number "))
             cart.append(items.name) #adds name of item to the cart
             print(f'you selected {items.name}!')
             quantity = int(input("how many would you like? "))# how many of the item you selected
-
-  
+            
+User selection to on which method to pay with:
+while payment_val == True:
+    payment = input("How would you like to pay? cash credit or check\n").lower()
+    if payment == "cash" or payment == "credit" or payment == "check":
+        receipts.calc.process_payment("", grand_total, payment)# select payment based on your choice
+        payment_val = False
+    else:
+        print("Invalid payment option. Please enter cash, credit or check.")
 
