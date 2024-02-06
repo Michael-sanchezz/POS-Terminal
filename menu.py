@@ -8,6 +8,21 @@ class menu_item:
     def __str__(self):
         return f'{self.name} - ${self.price}\t {self.description}'
 
+    def print_menu(self):
+        for item_number, item in enumerate(menu, start=1):
+            category = item.category
+            if category not in menu_by_category:
+                menu_by_category[category] = []
+
+
+
+        # Print menu items per category with item number
+        for category, items in menu_by_category.items():
+            print(f"{category}:")
+            for item_number, item in items:
+                print(f"  {item_number}: {item.name} - {item.description} - ${item.price}")
+        return ""
+
 
 
 
@@ -57,8 +72,8 @@ for category, items in menu_by_category.items():
     for item_number, item in items:
         print(f"  {item_number}: {item.name} - {item.description} - ${item.price}")
     print()
-
-
+#
+#
 
 
 
