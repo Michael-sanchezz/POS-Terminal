@@ -8,7 +8,7 @@ sub_total = 0
 grand_total = 0
 cart = []
 cart_quantity = []
-print(menu.menu_item.print_menu(""))
+
 val = False
 rec = receipts.calc
 while val == False:
