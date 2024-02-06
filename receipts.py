@@ -18,7 +18,8 @@ class calc:
             return ""
         elif payment_type == "check":
             check_number = input("Enter check number: ")
-            return f"Thanks for your payment! \nyour payment info{check_number}"
+            print(f"Thanks for your payment! \nyour payment info{check_number}")
+            return ""
         elif payment_type == "credit":
             ccnum = input("Enter credit card number: ")
             expiration = input("Enter expiration date (MMYY): ")
